@@ -1,0 +1,1 @@
+Developping a web-app that treats a get and post request for getting and updating the status of a lightbulb. The goal is to use it in thhe simulation as an app to connect to the virtual space and make some lamps to light on.

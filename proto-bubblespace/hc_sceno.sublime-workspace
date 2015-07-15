@@ -1,0 +1,398 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"slider",
+				"ledWarmSlider"
+			],
+			[
+				"ne",
+				"nextStep"
+			],
+			[
+				"aria",
+				"aria-valuenow"
+			],
+			[
+				"data",
+				"dataSent"
+			],
+			[
+				"service",
+				"serviceValide"
+			],
+			[
+				"xml",
+				"xmlObtained"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "services.js",
+			"settings":
+			{
+				"buffer_size": 1285,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/layout.html",
+			"settings":
+			{
+				"buffer_size": 1564,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 2490,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/magestic.html",
+			"settings":
+			{
+				"buffer_size": 15466,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/js/magestic.js",
+			"settings":
+			{
+				"buffer_size": 3436,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/admin.html",
+			"settings":
+			{
+				"buffer_size": 729,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/ptl01/dev/hc_sceno/views/template.html",
+		"/home/ptl01/dev/hc_sceno/xml2json.js",
+		"/home/ptl01/dev/hc_sceno/public/js/magestic.js",
+		"/home/ptl01/dev/hc_sceno/views/admin.html",
+		"/home/ptl01/dev/hc_sceno/public/script.js",
+		"/home/ptl01/dev/hc_sceno/views/magestic.html",
+		"/home/ptl01/dev/hc_sceno/app.js",
+		"/home/ptl01/dev/hc_sceno/views/layout.html",
+		"/home/ptl01/dev/hc_sceno/views/404.html",
+		"/home/ptl01/Bureau/ra2/app/script.js",
+		"/home/ptl01/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/ptl01/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"RTCurrent",
+			"NextStep",
+			"temperature",
+			"status",
+			"item",
+			"Complete"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "services.js",
+					"settings":
+					{
+						"buffer_size": 1285,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								68,
+								68
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "views/layout.html",
+					"settings":
+					{
+						"buffer_size": 1564,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								529,
+								529
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app.js",
+					"settings":
+					{
+						"buffer_size": 2490,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1110,
+								1110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/magestic.html",
+					"settings":
+					{
+						"buffer_size": 15466,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4550,
+								4550
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1734.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/js/magestic.js",
+					"settings":
+					{
+						"buffer_size": 3436,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 776.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "views/admin.html",
+					"settings":
+					{
+						"buffer_size": 729,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								324,
+								324
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.unsaved_changes":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/home/ptl01/Bureau/ra2/app.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 187.0,
+	"status_bar_visible": true
+}

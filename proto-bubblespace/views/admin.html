@@ -1,0 +1,31 @@
+
+<center>
+        <input class="btn btn-default" type=button name="cmdPrint" value="Print" onClick="window.print()">
+</center>
+
+{{#each servicesPublished}}
+
+
+<div id="{{id}}" class="panel panel-default">
+    <div class="panel-heading">
+        <center>
+            <h5 class="panel-heading">
+                <a href="http://{{url}}">{{title}}</a><br/>
+                Published: {{published}}
+            </h5>
+        </center>
+    </div>
+
+    <div class="panel-body">
+        <center>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data={{url}}" alt="{{title}}">
+
+            <p>
+                URL to write on NFC tag:
+                {{url}}
+            </p>
+        </center>
+    </div>
+
+</div>
+{{/each}}

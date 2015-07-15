@@ -1,0 +1,324 @@
+<script src="/js/magestic.js"></script>
+<script src="/js/bootstrap-tabcollapse.js"></script>
+<script type="text/javascript">
+    console.out("Aweonao");
+    $('#tabs').tabCollapse();
+</script>
+
+<ul class="nav nav-pills nav-justified" id="tabs" data-tabs="tabs">
+    <li class="active"><a href="#info" data-toggle="tab">Infos</a></li>
+    <li ><a href="#specs" data-toggle="tab">Specs</a></li>
+    <li ><a href="#stats" data-toggle="tab">Stats</a></li>
+    <li ><a href="#actions" data-toggle="tab">Actions</a></li>
+    <li ><a href="#misc" data-toggle="tab">Autres</a></li>
+</ul>
+
+<div id="tab-contents" class="tab-content">
+    <div class="tab-pane active" id="info">
+        <div class="panel panel-warning">
+
+            <div class="panel-heading">
+                <center>
+                    <h5 class="panel-heading">Information générales</h5>
+                </center>
+            </div>
+
+            <div class="panel-body">
+                <p>
+
+                    <b>Magestic</b> est une initiative...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis porttitor nibh sed consequat. Nunc porttitor magna ac arcu fringilla aliquam. Cras gravida tincidunt elit consectetur fringilla. Donec eu dui nibh. Proin eu felis felis. Quisque sed massa vitae nulla consectetur facilisis. Cras eget neque dapibus, facilisis augue et, facilisis sem. Sed porttitor hendrerit ipsum a imperdiet. Praesent mattis viverra arcu ac ultricies. Sed ultrices mattis nunc, vitae ullamcorper lectus porttitor et. Nullam vulputate neque vel volutpat tempor. In quis dictum mauris, id sollicitudin sem. Aenean imperdiet vulputate varius. Nullam vulputate nibh odio, sit amet viverra nisi iaculis vitae.
+
+                    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean convallis orci non enim auctor, nec bibendum lectus tristique. Praesent rhoncus diam nec dolor efficitur ornare. Donec tincidunt et eros vitae efficitur. Sed in magna et nibh auctor lacinia. Pellentesque eu ligula tempus, mattis sapien a, viverra lacus. In eu dolor sem.
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane" id="specs">
+        <div class="panel panel-info">
+
+            <div class="panel-heading">
+                <center>
+                    <h5 class="panel-heading">Specifications</h5>
+                </center>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="25%"><center>Atribute</center></th>
+                        <th width="75%"><center>Status</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><center>Dimensions<center></td>
+                        <td><center>100x100 cm?<center></td>
+                    </tr>
+                    <tr>
+                        <td><center>Année de creation</center></td>
+                        <td><center>20XX</center></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane" id="stats">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <center>
+                    <h5 class="panel-heading">Statistiques en temps réel</h5>
+                </center>
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th width="25%"><center>Atribute</center></th>
+                            <th width="75%"><center>
+                                Status</center>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td width="25%"><center>
+                                Temperature</center>
+                            </td>
+                            <td width="75%">
+                                <div class="progress">
+                                    <div id="temperatureBar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;"></div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="25%"><center>
+                                Puissance</center>
+                            </td>
+                            <td width="75%">
+                                <div class="progress">
+                                    <div id="currentBar" class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="1000" style="min-width: 2em;"></div>
+                                </div>
+
+                                <script>
+                                </script>
+
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="25%"><center>
+                                Luminosité</center>
+                            </td>
+                            <td width="75%">
+                                <div class="progress">
+                                    <div id="luminosityBar" class="progress-bar progress-bar-royal" role="progressbar" aria-valuemin="0" aria-valuemax="150" style="min-width: 2em;"></div>
+                                </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%"><center>
+                                Humidité</center>
+                            </td>
+                            <td width="75%">
+                                <div class="progress">
+                                    <div id="humidityBar" class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;"></div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div class="tab-pane" id="actions">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <center>
+                    <h5 class="panel-heading">Interactions</h5>
+                </center>
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th width="25%"><center>Atribute</center></th>
+                            <th width="75%"><center>
+                                Status</center>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td width="25%"><center>
+                                Led Chaud</center>
+                            </td>
+                            <td width="75%">
+                                <input id="ledWarm" data-slider-id='ledWarmSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1"  style="width: 100%;"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%"><center>
+                                Led Froid</center>
+                            </td>
+                            <td width="75%">
+                                <input id="ledCold" data-slider-id='ledColdSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1"  style="width: 100%;"/>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="25%"><center>
+                                Ventilateur</center>
+                            </td>
+                            <td width="75%">
+                                <input id="fan" data-slider-id='fanSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1"  style="width: 100%;"/>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="misc">
+        <div class="panel panel-warning">
+
+            <div class="panel-heading">
+                <center>
+                    <h5 class="panel-success">Log</h5>
+                </center>
+            </div>
+
+            <div class="panel-body">
+
+                <img id="currentImage" src="http://10.255.0.170:8080/rrdchart.png?items=current&period=h" style='width:100%;'>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<!-- Things that might get used-->
+<!--
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Gaaaaaaaaa</span></div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Gaaaaaaaaa (success)</span></div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Gaaaaaaaaa</span></div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Gaaaaaaaaa (danger)</span></div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Gaaaaaaaaa</span></div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% http://bluefaqs.com/wp-content/uploads/2009/11/css-tricks-404.jpgGaaaaaaaaa (success)</span></div>
+                            <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Gaaaaaaaaa (warning)</span></div>
+                            <div class="progress-bar progress-bar-danger" style="width: 10%"><span class='sr-only'>10% Gaaaaaaaaa (danger)</span></div>
+                        </div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <h1>Templates</h1>
+            <div class="page-header"></div>
+
+
+            <p>
+                <button type="button" class="btn btn-lg btn-default">Default</button>
+                <button type="button" class="btn btn-lg btn-primary">Primary</button>
+                <button type="button" class="btn btn-lg btn-success">Success</button>
+                <button type="button" class="btn btn-lg btn-info">Info</button>
+                <button type="button" class="btn btn-lg btn-warning">Warning</button>
+                <button type="button" class="btn btn-lg btn-danger">Danger</button>
+                <button type="button" class="btn btn-lg btn-link">Link</button>
+            </p>
+            <p>
+                <button type="button" class="btn btn-default">Default</button>
+                <button type="button" class="btn btn-primary">Primary</button>
+                <button type="button" class="btn btn-success">Success</button>
+                <button type="button" class="btn btn-info">Info</button>
+                <button type="button" class="btn btn-warning">Warning</button>
+                <button type="button" class="btn btn-danger">Danger</button>
+                <button type="button" class="btn btn-link">Link</button>
+            </p>
+            <p>
+                <button type="button" class="btn btn-sm btn-default">Default</button>
+                <button type="button" class="btn btn-sm btn-primary">Primary</button>
+                <button type="button" class="btn btn-sm btn-success">Success</button>
+                <button type="button" class="btn btn-sm btn-info">Info</button>
+                <button type="button" class="btn btn-sm btn-warning">Warning</button>
+                <button type="button" class="btn btn-sm btn-danger">Danger</button>
+                <button type="button" class="btn btn-sm btn-link">Link</button>
+            </p>
+            <p>
+                <button type="button" class="btn btn-xs btn-default">Default</button>
+                <button type="button" class="btn btn-xs btn-primary">Primary</button>
+                <button type="button" class="btn btn-xs btn-success">Success</button>
+                <button type="button" class="btn btn-xs btn-info">Info</button>
+                <button type="button" class="btn btn-xs btn-warning">Warning</button>
+                <button type="button" class="btn btn-xs btn-danger">Danger</button>
+                <button type="button" class="btn btn-xs btn-link">Link</button>
+            </p>
+
+            <div class="alert alert-success" role="alert">
+                <strong>Well done!</strong> You successfully read this important alert message.
+            </div>
+            <div class="alert alert-info" role="alert">
+                <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+            </div>
+            <div class="alert alert-warning" role="alert">
+                <strong>Warning!</strong> Best check yo self, you're not looking too good.
+            </div>
+            <div class="alert alert-danger" role="alert">
+                <strong>Oh snap!</strong> Change a few things up and try submitting again.
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Gaaaaaaaaa</span></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Gaaaaaaaaa (success)</span></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Gaaaaaaaaa</span></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Gaaaaaaaaa (warning)</span></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Gaaaaaaaaa (danger)</span></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Gaaaaaaaaa</span></div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Gaaaaaaaaa (success)</span></div>
+                <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Gaaaaaaaaa (warning)</span></div>
+                <div class="progress-bar progress-bar-danger" style="width: 10%"><span class='sr-only'>10% Gaaaaaaaaa (danger)</span></div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+-->
