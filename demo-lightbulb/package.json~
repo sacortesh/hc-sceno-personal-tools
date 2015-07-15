@@ -1,0 +1,11 @@
+{
+    "name": "demo-lightbulb",
+    "description": "App for demonstrating the power of the other solutions",
+    "version": "1.0",
+    "dependencies": {
+        "express": "3.x",
+	"mongoose": "3.x",
+  	"body-parser":"~1.0.1",
+	"xmlhttprequest":"*"
+    }
+}
