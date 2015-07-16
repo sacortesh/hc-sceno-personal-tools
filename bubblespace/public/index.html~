@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="crudApp" lang="en">
+
+<head>
+    <title>CRUD TEST</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="container" ng-controller="AppCtrl">
+<h1> Object CRUD </h1>
+
+	<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+<input ng-model="test">
+{{test}}
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<script src="controller/controller.js"></script>
+</body>
+
+</html>

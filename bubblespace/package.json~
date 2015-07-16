@@ -1,0 +1,13 @@
+{
+    "name": "bubblespace",
+    "description": "App to generate interaction pages",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "*",
+        "angular":"*",
+  	"bootstrap-slider":"*",
+	"xmlhttprequest":"*",
+	"body-parser":"*",
+	"mongoose": "*",
+    }
+}
