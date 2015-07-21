@@ -10,6 +10,12 @@ var port = process.env.PORT || 1992;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://user:gogoptl@ds059702.mongolab.com:59702/content-generator');
+
+
+var Obj = require('./app/models/object')
+
 //ROUTES===================================================
 //Obtaining data from a POST req.
 
@@ -23,6 +29,33 @@ router.use(function(req, res, next){
 
 //Testing the route
 router.use(express.static(__dirname + "/public"));
+app.get('/objectlist', function (req,res){
+    console.log("Obtaining objects");
+
+    Obj.find(function(err, data){
+            if(err)
+                res.send(err);
+            res.json(data);
+        })
+
+});
+
+app.post('/objectlist', function (req, res){
+
+    console.log("Posting to server");
+
+
+    var obj = new Obj();
+    obj.name = req.body.name;
+    obj.description = req.body.description;
+
+    obj.save(function(err){
+        if (err){
+            res.send(err);
+        }
+        console.log("Object created")
+    })
+})
 
 
 //BOOTING UP===================================================
