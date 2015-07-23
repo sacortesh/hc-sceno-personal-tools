@@ -96,7 +96,6 @@
                         <td width="75%">
                             <div class="progress">
                                 <div id="temperatureBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;"></div>
-
                             </div>
                         </td>
                     </tr>
@@ -111,9 +110,6 @@
                             </div>
 
                             <script>
-$( document ).ready(function () {
-    RTProgress("http://10.255.0.170:8080/" + "rest/items/current", "currentBar", "W", 1200, 2000);
-}
                             </script>
 
 
@@ -170,24 +166,6 @@ $( document ).ready(function () {
                         <td width="75%">
                             <input id="ledWarm" data-slider-id='ledWarmSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-handle="custom" style="width: 100%;"/>
                         </td>
-
-<script>
-$( document ).ready(function () {
- $("#ledWarm").slider({
-        formatter: function(value) {
-            return value;
-        }
-    });
-
- $("#ledWarm").on("slideStop", function(slideEvt){
-        onSlide("http://10.255.0.170:8080/"+"rest/items/led_warm/", slideEvt.value);
-    });
-
-    RTSlider("http://10.255.0.170:8080/" + "rest/items/led_warm", "ledWarm", 2000);
-
-}
-                            </script>
-
                     </tr>
                     <tr>
                         <td width="25%"><center>

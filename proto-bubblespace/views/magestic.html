@@ -1,4 +1,4 @@
-<script src="/js/magestic.js"></script>
+<script src="/js/bubblespace-utilities.js"></script>
 
 <div class="container">
 
@@ -38,7 +38,7 @@
     <div id="tab-contents" class="tab-content">
         <div class="tab-pane active" id="info">
 
-         <div class="panel-body">
+           <div class="panel-body">
             <p>
 
                 <b>Magestic</b> est une initiative...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis porttitor nibh sed consequat. Nunc porttitor magna ac arcu fringilla aliquam. Cras gravida tincidunt elit consectetur fringilla. Donec eu dui nibh. Proin eu felis felis. Quisque sed massa vitae nulla consectetur facilisis. Cras eget neque dapibus, facilisis augue et, facilisis sem. Sed porttitor hendrerit ipsum a imperdiet. Praesent mattis viverra arcu ac ultricies. Sed ultrices mattis nunc, vitae ullamcorper lectus porttitor et. Nullam vulputate neque vel volutpat tempor. In quis dictum mauris, id sollicitudin sem. Aenean imperdiet vulputate varius. Nullam vulputate nibh odio, sit amet viverra nisi iaculis vitae.
@@ -96,6 +96,7 @@
                         <td width="75%">
                             <div class="progress">
                                 <div id="temperatureBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;"></div>
+
                             </div>
                         </td>
                     </tr>
@@ -110,6 +111,9 @@
                             </div>
 
                             <script>
+                            $( document ).ready(function () {
+                                RTProgress("http://10.255.0.170:8080/" + "rest/items/current", "currentBar", "W", 1200, 2000);
+                            });
                             </script>
 
 
@@ -166,34 +170,52 @@
                         <td width="75%">
                             <input id="ledWarm" data-slider-id='ledWarmSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-handle="custom" style="width: 100%;"/>
                         </td>
-                    </tr>
-                    <tr>
-                        <td width="25%"><center>
-                            Led Froid</center>
-                        </td>
-                        <td width="75%">
-                            <input id="ledCold" data-slider-id='ledColdSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-handle="custom" style="width: 100%;"/>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="25%"><center>
-                            Ventilateur</center>
-                        </td>
-                        <td width="75%">
-                            <input id="fan" data-slider-id='fanSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-handle="custom" style="width: 100%;"/>
+                        <script>
+                        $( document ).ready(function () {
+                           $("#ledWarm").slider({
+                            formatter: function(value) {
+                                return value;
+                            }
+                            });
 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                           $("#ledWarm").on("slideStop", function(slideEvt){
+                            onSlide("http://10.255.0.170:8080/"+"rest/items/led_warm/", slideEvt.value);
+                            });
+
+                           RTSlider("http://10.255.0.170:8080/" + "rest/items/led_warm", "ledWarm", 2000);
+
+                        });
+                       </script>
+
+                   </tr>
+                   <tr>
+                    <td width="25%"><center>
+                        Led Froid</center>
+                    </td>
+                    <td width="75%">
+                        <input id="ledCold" data-slider-id='ledColdSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1"  data-slider-handle="custom" style="width: 100%;"/>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td width="25%"><center>
+                        Ventilateur</center>
+                    </td>
+                    <td width="75%">
+                        <input id="fan" data-slider-id='fanSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-handle="custom" style="width: 100%;"/>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="tab-pane" id="misc">
+</div>
+<div class="tab-pane" id="misc">
 
-       <img id="currentImage" src="http://10.255.0.170:8080/rrdchart.png?items=current&period=h" style='width:100%;'>
+ <img id="currentImage" src="http://10.255.0.170:8080/rrdchart.png?items=current&period=h" style='width:100%;'>
 
-   </div>
+</div>
 
 </div>
 </div>

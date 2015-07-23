@@ -78,7 +78,7 @@ $(function(){
         }
     });
     $("#ledWarm").on("slideStop", function(slideEvt){
-        onSlide(targetURL+"rest/items/led_warm/", slideEvt.value);
+        onSlide("http://10.255.0.170:8080/"+"rest/items/led_warm/", slideEvt.value);
     });
 
     $("#ledCold").slider({
@@ -88,7 +88,7 @@ $(function(){
     });
 
     $("#ledCold").on("slideStop", function(slideEvt){
-        onSlide(targetURL + "rest/items/led_cold/", slideEvt.value);
+        onSlide("http://10.255.0.170:8080/" + "rest/items/led_cold/", slideEvt.value);
     });
 
     $("#fan").slider({
@@ -104,15 +104,15 @@ $(function(){
 
 $( document ).ready(function () {
 
-    RTProgress(targetURL + "rest/items/current", "currentBar", "W", 1200, 2000);
-    RTProgress(targetURL + "rest/items/luminosity", "luminosityBar", "lux", 1000, 2000);
-    RTProgress(targetURL + "rest/items/temperature", "temperatureBar", "°C", 100, 2000);
-    RTProgress(targetURL + "rest/items/humidity", "humidityBar", " %", 100, 2000);
+    RTProgress("http://10.255.0.170:8080/" + "rest/items/current", "currentBar", "W", 1200, 2000);
+    RTProgress("http://10.255.0.170:8080/" + "rest/items/luminosity", "luminosityBar", "lux", 1000, 2000);
+    RTProgress("http://10.255.0.170:8080/" + "rest/items/temperature", "temperatureBar", "°C", 100, 2000);
+    RTProgress("http://10.255.0.170:8080/" + "rest/items/humidity", "humidityBar", " %", 100, 2000);
 
-    RTSlider(targetURL + "rest/items/led_warm", "ledWarm", 2000);
-    RTSlider(targetURL + "rest/items/led_cold", "ledCold", 2000);
-    RTSlider(targetURL + "rest/items/fan", "fan", 2000);
+    RTSlider("http://10.255.0.170:8080/" + "rest/items/led_warm", "ledWarm", 2000);
+    RTSlider("http://10.255.0.170:8080/" + "rest/items/led_cold", "ledCold", 2000);
+    RTSlider("http://10.255.0.170:8080/" + "rest/items/fan", "fan", 2000);
 
-    RTGraphic(targetURL + "rrdchart.png?items=temperature,current,humidity,luminosity&period=h", "currentImage", 5000);
+    RTGraphic("http://10.255.0.170:8080/" + "rrdchart.png?items=temperature,current,humidity,luminosity&period=h", "currentImage", 5000);
 
 })
