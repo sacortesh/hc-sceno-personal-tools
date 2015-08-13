@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="crudApp" lang="en">
+
+<head>
+    <title>CRUD TEST</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container" ng-controller="AppCtrl">
+        <h1> Object CRUD </h1>
+
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class="form-control" ng-model="object.name"></td>
+                        <td><input class="form-control" ng-model="object.description"></td>
+                        <td><button class="btn btn-primary" ng-click="editObject()">Edit Object</button></td>
+                    </tr>
+                    <tr>
+                        <td>{{object.name}}</td>
+                        <td>{{object.description}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container" ng-controller="AppCtrl">
+          <form novalidate class="simple-form">
+            Name: <input type="text" ng-model="user.name" /><br />
+            Minimum value: <input type="text" ng-model="user.email" /><br />
+            Maximum value: <input type="text" ng-model="user.email" /><br />
+            URL Interaction: <input type="text" ng-model="user.gender" /><br />
+            Field: <input type="text" ng-model="user.gender" /><br />
+            Unit: <input type="text" ng-model="user.gender" /><br />
+            <input type="button" ng-click="reset()" value="Reset" />
+            <input type="submit" ng-click="update(user)" value="Save" />
+        </form>
+
+
+        <pre>form = {{user | json}}</pre>
+        <pre>master = {{master | json}}</pre>
+        </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="controller/controller.js"></script>
+</body>
+
+</html>

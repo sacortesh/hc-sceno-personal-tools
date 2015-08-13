@@ -40,6 +40,69 @@ app.get('/objectlist', function (req,res){
 
 });
 
+/*
+app.get('/', function(request, response){
+    console.log("Route root detected");
+    response.render(404,
+    {
+        title:"404 Not Found"
+    });
+});
+*/
+
+/*
+app.get('/admin', function(request, response) {
+    console.log("Route api detected");
+    response.render('admin',
+        {title:"Administration des services",
+        servicesPublished:services.getPublishedServices()
+    });
+});
+*/
+
+/*
+app.get('/service/:id', function(request, response) {
+
+    var id = request.params.id;
+    var xmlObtained = null;
+    var transformed;
+    var dataSent = null;
+    var serviceValide = true;
+
+    if (id == "magestic"){
+
+        //Cette space est vide car toute la fonctionalité était mieux place cote client que coté serveur.
+        //C'est pas toujours le même cas.
+
+    }
+
+    else
+    {
+        serviceValide = false
+    }
+
+    if (serviceValide){
+        console.log("Routing to service: " + id);
+        var ser = services.getPublishedService(id);
+        response.render(id,
+        {
+            title:ser.title,
+            data:dataSent
+        })
+    } else{
+        console.log("Service " + id + " undefined");
+        response.render(404,
+        {
+            title:"404 Not Found"
+        });
+    }
+
+
+
+});
+*/
+
+
 app.post('/objectlist', function (req, res){
 
     console.log("Posting to server");
@@ -56,6 +119,9 @@ app.post('/objectlist', function (req, res){
         console.log("Object created")
     })
 })
+
+
+//todo Si la route n'est pas geré, donc afficher la page d'erreur
 
 
 //BOOTING UP===================================================
