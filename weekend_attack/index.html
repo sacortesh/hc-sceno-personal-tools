@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<title>
+			Super awesome weekend project
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+	</head>
+	<body ng-app="weekendAttack">
+	        <div class="row">
+	        <div class="col-md-6 col-md-offset-3">
+        	<div class="container">
+
+	        	<ui-view></ui-view>
+	        </div>
+		
+				</div>
+
+		</div>
+
+
+		<!--Inline Templates -->
+		<script type="text/ng-template" id="/home.html">
+
+		<div class="header">
+			<center><h1>Super awesome weekend project</h1><center>
+		</div>
+		<div class="container">
+			<div class="container panel panel-default" ng-repeat="obj in objects | orderBy: 'title'">
+				<span ng-click="incrementPriority(obj)">UP</span>
+				<span ng-click="decreasePriority(obj)">DOWN</span>
+				{{obj.priority}} - 
+		        <span style="font-size:20px; margin-left:10px;">
+				<a href="localhost:1992/objects/{{obj.title | lowercase}}">{{obj.title | lowercase}}</a>
+
+				<a href="#/objects/{{$index}}">Information</a>
+
+				</span>
+		        <blockquote ng-show="obj.description">
+				<p class="lead">{{obj.description}}</p>
+				</blockquote>
+				<div class="group" ng-hide="locked">
+				<button class="btn btn-primary">Edit</button>
+				<button class="btn btn-primary">Delete</button>
+				</div>
+			</div>
+		</div>
+		<br></br>
+
+		<div class="container">
+		<button ng-click="lockInterface()" class="btn btn-primary">Lock/Unlock</button>
+		</div>
+
+		<br></br>
+
+
+		<div class="container jumbotron" ng-hide="locked">
+
+		<form ng-submit="addObject()">
+	        <h3>Create an object</h3>
+	        <div class="form-group">
+			<input type="text" class="form-control" placeholder='Title' ng-model="title"></input>
+			</div>
+	        <div class="form-group">
+	        <textarea type="text" class="form-control" placeholder='Description' ng-model="description" rows="3"></textarea>
+			</div>
+	        <div class="form-group">
+			<p class="lead">Generated url access: localhost:1992/objects/{{title | lowercase}} </p> 
+			</div>
+	        <div class="form-group">
+			<button type="submit" class="btn btn-primary">Create/Edit</button>
+			<button class="btn btn-primary">Reset</button>
+			</div>
+
+		</form>
+		</div>
+
+		</div>
+
+		</script>
+
+<script type="text/ng-template" id="/objects.html">
+
+		<div class="header">
+			<center><h1>{{obj.title}}</h1><center>
+		</div>
+		<div class="container">
+			<div class="container panel panel-default" ng-repeat="spec in obj.specs | orderBy: 'name'">
+				
+				{{spec.name}} - {{spec.value}} 
+		        
+				<button class="btn btn-primary">Edit</button>
+				<button class="btn btn-primary">Delete</button>
+				</div>
+			</div>
+		
+		</script>
+
+
+	</body>
+</html>	
+	
