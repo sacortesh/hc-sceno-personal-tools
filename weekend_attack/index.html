@@ -1,106 +1,160 @@
 <html>
-	<head>
-		<title>
-			Super awesome weekend project
-		</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<title>
+		Super awesome weekend project
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
-	</head>
-	<body ng-app="weekendAttack">
-	        <div class="row">
-	        <div class="col-md-6 col-md-offset-3">
-        	<div class="container">
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+</head>
+<body ng-app="weekendAttack">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="container">
 
-	        	<ui-view></ui-view>
-	        </div>
-		
-				</div>
+				<ui-view></ui-view>
+			</div>
 
 		</div>
 
+	</div>
 
-		<!--Inline Templates -->
-		<script type="text/ng-template" id="/home.html">
 
-		<div class="header">
-			<center><h1>Super awesome weekend project</h1><center>
-		</div>
-		<div class="container">
-			<div class="container panel panel-default" ng-repeat="obj in objects | orderBy: 'title'">
-				<span ng-click="incrementPriority(obj)">UP</span>
-				<span ng-click="decreasePriority(obj)">DOWN</span>
-				{{obj.priority}} - 
-		        <span style="font-size:20px; margin-left:10px;">
-				<a href="localhost:1992/objects/{{obj.title | lowercase}}">{{obj.title | lowercase}}</a>
+	<!--Inline Templates -->
+	<!--Chaange when deploying to webserver -->
+	<script type="text/ng-template" id="/home.html">
 
-				<a href="#/objects/{{$index}}">Information</a>
+	<div class="header">
+	<center><h1>Super awesome weekend project</h1><center>
+	</div>
+	<div class="container">
+	<div class="container panel panel-default" ng-repeat="obj in objects | orderBy: 'title'">
+	<span ng-click="incrementPriority(obj)">UP</span>
+	<span ng-click="decreasePriority(obj)">DOWN</span>
+	{{obj.priority}} -
+	<span style="font-size:20px; margin-left:10px;">
+	<a href="localhost:1992/objects/{{obj.title | lowercase}}">{{obj.title | lowercase}}</a>
 
-				</span>
-		        <blockquote ng-show="obj.description">
-				<p class="lead">{{obj.description}}</p>
-				</blockquote>
-				<div class="group" ng-hide="locked">
+	<a href="#/objects/{{$index}}">Information</a>
+
+	</span>
+	<blockquote ng-show="obj.description">
+	<p class="lead">{{obj.description}}</p>
+	</blockquote>
+	<div class="group" ng-hide="locked">
+	<button class="btn btn-primary">Edit</button>
+	<button class="btn btn-primary">Delete</button>
+	</div>
+	</div>
+	</div>
+	<br></br>
+
+	<div class="container">
+	<button ng-click="lockInterface()" class="btn btn-primary">Lock/Unlock</button>
+	</div>
+
+	<br></br>
+
+
+	<div class="container jumbotron" ng-hide="locked">
+
+	<form ng-submit="addObject()">
+	<h3>Create an object</h3>
+	<div class="form-group">
+	<input type="text" class="form-control" placeholder='Title' ng-model="title"></input>
+	</div>
+	<div class="form-group">
+	<textarea type="text" class="form-control" placeholder='Description' ng-model="description" rows="3"></textarea>
+	</div>
+	<div class="form-group">
+	<p class="lead">Generated url access: localhost:1992/objects/{{title | lowercase}} </p>
+	</div>
+	<div class="form-group">
+	<button type="submit" class="btn btn-primary">Create/Edit</button>
+	<button class="btn btn-primary">Reset</button>
+	</div>
+
+	</form>
+	</div>
+
+	</div>
+
+	</script>
+
+	<script type="text/ng-template" id="/objects.html">
+	<div class="header">
+	<center><h1>{{obj.title}}</h1><center>
+	</div>
+	<div class="container">
+	<div class="container panel panel-default">
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Value</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="spec in obj.specs | orderBy: 'name'">
+				<td>{{spec.name}}</td>
+				<td>
+					<img ng-src="{{spec.value}}" ng-show="{{spec.isImg}}"  alt="{{spec.name}}" height="100" width="100">
+					<span ng-hide="{{spec.isImg}}">{{spec.value}}</span>
+				</td>
+				<td>
 				<button class="btn btn-primary">Edit</button>
 				<button class="btn btn-primary">Delete</button>
-				</div>
-			</div>
-		</div>
-		<br></br>
-
-		<div class="container">
-		<button ng-click="lockInterface()" class="btn btn-primary">Lock/Unlock</button>
-		</div>
-
-		<br></br>
-
-
-		<div class="container jumbotron" ng-hide="locked">
-
-		<form ng-submit="addObject()">
-	        <h3>Create an object</h3>
-	        <div class="form-group">
-			<input type="text" class="form-control" placeholder='Title' ng-model="title"></input>
-			</div>
-	        <div class="form-group">
-	        <textarea type="text" class="form-control" placeholder='Description' ng-model="description" rows="3"></textarea>
-			</div>
-	        <div class="form-group">
-			<p class="lead">Generated url access: localhost:1992/objects/{{title | lowercase}} </p> 
-			</div>
-	        <div class="form-group">
-			<button type="submit" class="btn btn-primary">Create/Edit</button>
-			<button class="btn btn-primary">Reset</button>
-			</div>
-
-		</form>
-		</div>
-
-		</div>
-
-		</script>
-
-<script type="text/ng-template" id="/objects.html">
-
-		<div class="header">
-			<center><h1>{{obj.title}}</h1><center>
-		</div>
-		<div class="container">
-			<div class="container panel panel-default" ng-repeat="spec in obj.specs | orderBy: 'name'">
-				
-				{{spec.name}} - {{spec.value}} 
-		        
-				<button class="btn btn-primary">Edit</button>
-				<button class="btn btn-primary">Delete</button>
-				</div>
-			</div>
-		
-		</script>
+				</td>
+			</tr>
+			<tr ng-hide="((!name || name=='') && (!value || value==''))" class="info">
+				<td>{{name}}</td>
+				<td>
+					<img ng-show="isImg" ng-src="{{value}}" alt="{{name}}" height="100" width="100">
+					<span ng-hide="isImg">{{value}}</span>
+				</td>
+				<td>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
 
-	</body>
-</html>	
-	
+	</div>
+	</div>
+
+	<!-- Form -->
+
+	<div class="container jumbotron">
+
+	<form ng-submit="addSpec()">
+	<h3>Add new specification</h3>
+	<div class="form-group">
+	<input type="text" class="form-control" placeholder='Name' ng-model="name"></input>
+	</div>
+	<div class="form-group">
+	<input type="text" class="form-control" placeholder='Value (or Url of image)' ng-model="value"></input>
+	</div>
+	<div class="checkbox">
+	<label>
+	<input type="checkbox" ng-model="isImg"> Is it an Img? </input>
+	</label>
+	</div>
+	<div class="form-group">
+	<button type="submit" class="btn btn-primary">Create/Edit</button>
+	<button class="btn btn-primary">Reset</button>
+	</div>
+
+	</form>
+	</div>
+
+
+	</script>
+
+
+</body>
+</html>

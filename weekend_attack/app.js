@@ -17,7 +17,7 @@ app.config([
 			controller: 'ObjectsCtrl'
 		});
 
-	$urlRouterProvider.otherwise('home');
+		$urlRouterProvider.otherwise('home');
 	}]);
 
 app.controller('MainCtrl', ['$scope', 'objects', function($scope, objects){
@@ -32,12 +32,12 @@ app.controller('MainCtrl', ['$scope', 'objects', function($scope, objects){
 
 		$scope.objects.push({
 			title: $scope.title,
-			description: $scope.description, 
+			description: $scope.description,
 			priority:0,
 			specs: [
-				{name: 'Height', value: 'Very Tall', isImg: false},
-				{name: 'Color', value: 'Black', isImg: false},
-				{name: 'Image', value: 'http://www.bodyrock.tv/wp-content/uploads/2013/06/Funny-Picture-Spirit-of-Baby.jpg', isImg: true}
+			{name: 'Height', value: 'Very Tall', isImg: false},
+			{name: 'Color', value: 'Black', isImg: false},
+			{name: 'Image', value: 'http://www.bodyrock.tv/wp-content/uploads/2013/06/Funny-Picture-Spirit-of-Baby.jpg', isImg: true}
 			]
 		});
 		$scope.title = '';
@@ -63,6 +63,24 @@ app.controller('ObjectsCtrl',[
 	'objects',
 	function($scope,$stateParams, objects){
 		$scope.obj = objects.objects[$stateParams.id];
+
+		$scope.addSpec = function (){
+			//Verify non-value specs
+			if($scope.value === ''){return;}
+			$scope.obj.specs.push({
+				name: $scope.name,
+				value: $scope.value,
+				isImg: $scope.isImg
+			});
+
+			//Reset
+			$scope.name = '';
+			$scope.value = '';
+			$scope.isImg = false;
+
+		};
+
+
 	}]);
 
 app.factory('objects', [function(){
@@ -85,9 +103,9 @@ app.factory('objects', [function(){
 			title: 'Magestic',
 			priority: 1
 		}
-	
-	]
-		
+
+		]
+
 	};
 	return o;
 }]);
