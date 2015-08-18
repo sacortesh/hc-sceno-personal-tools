@@ -8,13 +8,23 @@ app.config([
 		.state('home',{
 			url: '/home',
 			templateUrl: '/home.html',
-			controller: 'MainCtrl'
+			controller: 'MainCtrl',
+			resolve: {
+				objectPromise: ['objects', function(objects){
+					return objects.getAll();
+				}]
+			}
 		});
 
 		$stateProvider.state('objects', {
 			url: '/objects/{id}',
 			templateUrl: '/objects.html',
-			controller: 'ObjectsCtrl'
+			controller: 'ObjectsCtrl',
+			resolve: {
+				object: ['$stateParams', 'objects', function($stateParams, objects){
+					return objects.get($stateParams.id);
+				}]
+			}
 		});
 
 		$urlRouterProvider.otherwise('home');
@@ -27,20 +37,16 @@ app.controller('MainCtrl', ['$scope', 'objects', function($scope, objects){
 
 	$scope.addObject = function(){
 		//Verifications
-		if(!$scope.title || $scope.title === ''){return;}
+		if(!$scope.name || $scope.name === ''){return;}
 
 
-		$scope.objects.push({
-			title: $scope.title,
+		objects.create({
+			name: $scope.name,
 			description: $scope.description,
-			priority:0,
-			specs: [
-			{name: 'Height', value: 'Very Tall', isImg: false},
-			{name: 'Color', value: 'Black', isImg: false},
-			{name: 'Image', value: 'http://www.bodyrock.tv/wp-content/uploads/2013/06/Funny-Picture-Spirit-of-Baby.jpg', isImg: true}
-			]
 		});
-		$scope.title = '';
+
+		//Clean up
+		$scope.name = '';
 		$scope.description = '';
 	};
 
@@ -57,21 +63,26 @@ app.controller('MainCtrl', ['$scope', 'objects', function($scope, objects){
 	};
 }]);
 
+
+//Attention to the mapping, it can get confusing.
 app.controller('ObjectsCtrl',[
 	'$scope',
-	'$stateParams',
 	'objects',
-	function($scope,$stateParams, objects){
-		$scope.obj = objects.objects[$stateParams.id];
+	'object',
+	function($scope, objects, object){
+		$scope.obj = object;
 
 		$scope.addSpec = function (){
 			//Verify non-value specs
 			if($scope.value === ''){return;}
-			$scope.obj.specs.push({
+
+			objects.addSpec(object._id,{
 				name: $scope.name,
 				value: $scope.value,
 				isImg: $scope.isImg
-			});
+			}).success(function(spec){
+				$scope.obj.specs.push(spec);
+			})
 
 			//Reset
 			$scope.name = '';
@@ -83,29 +94,32 @@ app.controller('ObjectsCtrl',[
 
 	}]);
 
-app.factory('objects', [function(){
+app.factory('objects', ['$http', function($http){
 	var o = {
-		objects: [
-
-		{
-			title: 'Chair',
-			priority: 4
-		},
-		{
-			title: 'FauxLamp',
-			priority: 3
-		},
-		{
-			title: 'LedBox',
-			priority: 2
-		},
-		{
-			title: 'Magestic',
-			priority: 1
-		}
-
-		]
-
+		objects: []
 	};
+
+	o.getAll = function(){
+		return $http.get('/api/objects').success(function(data){
+			angular.copy(data, o.objects);
+		});
+	};
+
+	o.create = function(obj){
+		return $http.post('/api/objects', obj).success(function(data){
+			o.objects.push(data);
+		});
+	};
+
+	o.get = function(id){
+		return $http.get('/api/objects/' + id).then(function(res){
+			return res.data;
+		});
+	};
+
+	o.addSpec = function(id, spec){
+		return $http.post('/api/objects/' +id + '/specs', spec);
+	};
+
 	return o;
 }]);

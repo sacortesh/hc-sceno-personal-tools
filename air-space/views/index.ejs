@@ -35,14 +35,14 @@
 	<div class="container panel panel-default">
 	<ul class="list-group">
 
-	<li class="list-group-item" ng-repeat="obj in objects | orderBy: 'title'">
+	<li class="list-group-item" ng-repeat="obj in objects | orderBy: 'name'">
 	<span ng-click="incrementPriority(obj)">UP</span>
 	<span ng-click="decreasePriority(obj)">DOWN</span>
 	{{obj.priority}} -
 	<span style="font-size:20px; margin-left:10px;">
-	<a href="localhost:1992/objects/{{obj.title | lowercase}}">{{obj.title | lowercase}}</a>
+	<a href="localhost:1992/objects/{{obj.name | lowercase}}">{{obj.name | lowercase}}</a>
 	</span>
-	<a href="#/objects/{{$index}}">Information</a>
+	<a href="#/objects/{{obj._id}}">Information</a>
 	<div class="group pull-right" ng-hide="locked">
 	<button class="btn btn-primary">Edit</button>
 	<button class="btn btn-primary">Delete</button>
@@ -70,13 +70,13 @@
 	<form ng-submit="addObject()">
 	<h3>Create an object</h3>
 	<div class="form-group">
-	<input type="text" class="form-control" placeholder='Title' ng-model="title"></input>
+	<input type="text" class="form-control" placeholder='Object name' ng-model="name"></input>
 	</div>
 	<div class="form-group">
 	<textarea type="text" class="form-control" placeholder='Description' ng-model="description" rows="3"></textarea>
 	</div>
 	<div class="form-group">
-	<p class="lead">Generated url access: localhost:1992/objects/{{title | lowercase}} </p>
+	<p class="lead">Generated url access: localhost:1992/objects/{{name | lowercase}} </p>
 	</div>
 	<div class="form-group">
 	<button type="submit" class="btn btn-primary">Create/Edit</button>
@@ -92,7 +92,7 @@
 
 	<script type="text/ng-template" id="/objects.html">
 	<div class="page-header">
-	<center><h1>{{obj.title}}</h1><center>
+	<center><h1>{{obj.name}}</h1><center>
 	</div>
 	<div class="container">
 	<div class="container panel panel-default">
