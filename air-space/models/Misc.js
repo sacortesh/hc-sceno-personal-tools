@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-var MiscSchema = new mongoose.Schema;({
-            url: String //montrer url
+var MiscSchema = new mongoose.Schema({
+            url: String ,//montrer url
 
             object: {
                 type: mongoose.Schema.Types.ObjectId,
@@ -9,4 +9,4 @@ var MiscSchema = new mongoose.Schema;({
             }
         });
 
-module.exports = mongoose.model('Misc', MiscSchema);
+mongoose.model('Misc', MiscSchema);

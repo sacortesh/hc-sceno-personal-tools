@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var ObjectSchema = new mongoose.Schema;({
+var ObjectSchema = new mongoose.Schema({
     name: String, //nom
     description: String, //description
     specs: [{
@@ -21,4 +21,4 @@ var ObjectSchema = new mongoose.Schema;({
     }
 });
 
-module.exports = mongoose.model('Object', ObjectSchema);
+mongoose.model('Object', ObjectSchema);
