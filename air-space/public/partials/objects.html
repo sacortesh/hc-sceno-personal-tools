@@ -24,7 +24,15 @@
 
     <tabset justified="true" type="pills">
         <tab heading="Information générales">
-            Content Info
+
+            <br>
+
+            <div class="panel panel-default">
+                <br>
+                <p class="lead"><strong>Description</strong></p>
+                <p>{{obj.description}}</p>
+
+            </div>
         </tab>
         <tab heading="Specifications">
 
@@ -98,9 +106,114 @@
         </div>
 
     </tab>
-    <tab heading="Statistiques en temps réel">Statistiques en temps réel</tab>
-    <tab heading="Interactions">Interactions</tab>
-    <tab heading="Autres">Autres</tab>
+    <tab heading="Statistiques en temps réel">
+
+        <br>
+
+        <div class="panel panel-default">
+
+            <table class="table table-hover">
+                <colgroup>
+                <col class="col-md-2"></col>
+                <col class="col-md-2"></col>
+                <col class="col-md-4"></col>
+                <col class="col-md-1"></col>
+                <col class="col-md-1"></col>
+                <col class="col-md-2"></col>
+
+            </colgroup>
+
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Range</th>
+                    <th>API Url</th>
+                    <th>Field Returned</th>
+                    <th>Unit</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stat in obj.stats | orderBy: 'name'">
+                    <td>{{stat.name}}</td>
+                    <td>
+                        {{stat.val_min}} - {{stat.val_max}}
+                    </td>
+                    <td>
+                        {{stat.url_interaction}}
+                    </td>
+                    <td>
+                        {{stat.field}}
+                    </td>
+                    <td>
+                        {{stat.unit}}
+                    </td>
+                    <td>
+                        <button class="btn btn-primary disabled">Edit</button>
+                        <button class="btn btn-primary disabled">Delete</button>
+                    </td>
+                </tr>
+                <tr ng-hide="((!name || name=='') && (!value || value==''))" class="info">
+                    <td>{{name}}</td>
+                    <td>
+                        {{val_min}} - {{val_max}}
+                    </td>
+                    <td>
+                        {{url_interaction}}
+                    </td>
+                    <td>
+                        {{field}}
+                    </td>
+                    <td>
+                        {{unit}}
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <div class="jumbotron">
+
+
+        <form ng-submit="addStat()">
+            <h3>Add new specification</h3>
+            <p>This will be rendered as a status bar</p>
+
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder='Name' ng-model="name"></input>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder='Minimum Value' ng-model="val_min"></input>
+                <input type="text" class="form-control" placeholder='Maximum Value' ng-model="val_max"></input>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder='API Url' ng-model="url_interaction"></input>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder='Target Field (in Retuurned JSON)' ng-model="field"></input>
+                <input type="text" class="form-control" placeholder='Unit of measure' ng-model="unit"></input>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create/Edit</button>
+                <button type="reset" class="btn btn-primary disabled">Reset</button>
+            </div>
+
+        </form>
+    </div>
+
+
+
+
+</tab>
+<tab heading="Interactions">Interactions</tab>
+<tab heading="Autres">Autres</tab>
 
 </tabset>
 

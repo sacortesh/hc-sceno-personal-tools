@@ -88,12 +88,44 @@ app.controller('ObjectsCtrl',[
 				isImg: $scope.isImg
 			}).success(function(spec){
 				$scope.obj.specs.push(spec);
-			})
+			});
 
 			//Reset
 			$scope.name = '';
 			$scope.value = '';
 			$scope.isImg = false;
+
+		};
+
+		$scope.addStat = function (){
+			//Verify non-value specs
+			if($scope.value === '' || $scope.name === '' ||
+				$scope.val_min === '' || $scope.val_max === '' ||
+				$scope.url_interaction || $scope.field){
+				console.log("Imprime esto");
+
+				return;}
+
+			console.log("Imprime esto:" + $scope.name);
+
+			objects.addStat(object._id, {
+				name: $scope.name,
+				val_min: $scope.val_min,
+				val_max: $scope.val_max,
+				url_interaction: $scope.url_interaction,
+				field: $scope.field,
+				unit: $scope.unit
+			}).success(function(stat){
+				$scope.obj.stats.push(stat);
+			});
+
+			//Reset
+			$scope.name = '';
+			$scope.val_min = '';
+			$scope.val_max = '';
+			$scope.url_interaction= '';
+			$scope.field = '';
+			$scope.unit = '';
 
 		};
 
@@ -125,6 +157,10 @@ app.factory('objects', ['$http', function($http){
 
 	o.addSpec = function(id, spec){
 		return $http.post('/api/objects/' +id + '/specs', spec);
+	};
+
+	o.addStat = function(id, stat){
+		return $http.post('/api/objects/' +id + '/stats', stat);
 	};
 
 	return o;
