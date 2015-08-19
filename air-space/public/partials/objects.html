@@ -1,0 +1,116 @@
+<div class="page-header">
+    <center><h1>{{obj.name}}</h1></center>
+</div>
+
+
+<accordion>
+    <accordion-group is-open="false">
+    <accordion-heading>
+    <center>QRCODE Information</center>
+</accordion-heading>
+<center><img ng-src="https://api.qrserver.com/v1/create-qr-code/?data={{ip}}/services/{{obj.name | lowercase}}" alt="QRCODE"></center>
+<center>
+    <span class="glyphicon glyphicon-link"><a href="http://{{ip}}/services/{{obj.name | lowercase}}">Visit Rendered URL</a></span></center>
+    <br>
+    <center>
+        <input class="btn btn-default" type=button name="cmdPrint" value="Print" onClick="window.print()"></input>
+    </center>
+</accordion-group>
+</accordion>
+
+<br></br>
+
+<div>
+
+    <tabset justified="true" type="pills">
+        <tab heading="Information générales">
+            Content Info
+        </tab>
+        <tab heading="Specifications">
+
+            <br>
+
+            <div class="panel panel-default">
+
+                <table class="table table-hover">
+                    <colgroup>
+                    <col class="col-md-2"></col>
+                    <col class="col-md-8"></col>
+                    <col class="col-md-2"></col>
+                </colgroup>
+
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="spec in obj.specs | orderBy: 'name'">
+                        <td>{{spec.name}}</td>
+                        <td>
+                            <img ng-src="{{spec.value}}" ng-show="{{spec.isImg}}"  alt="{{spec.name}}" height="100" width="100">
+                            <span ng-hide="{{spec.isImg}}">{{spec.value}}</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary disabled">Edit</button>
+                            <button class="btn btn-primary disabled">Delete</button>
+                        </td>
+                    </tr>
+                    <tr ng-hide="((!name || name=='') && (!value || value==''))" class="info">
+                        <td>{{name}}</td>
+                        <td>
+                            <img ng-show="isImg" ng-src="{{value}}" alt="{{name}}" height="100" width="100">
+                            <span ng-hide="isImg">{{value}}</span>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+        <div class="jumbotron">
+
+            <form ng-submit="addSpec()">
+                <h3>Add new specification</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder='Name' ng-model="name"></input>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder='Value (or Url of image)' ng-model="value"></input>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="isImg"> Is it an Img? </input>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create/Edit</button>
+                    <button type="reset" class="btn btn-primary disabled">Reset</button>
+                </div>
+
+            </form>
+        </div>
+
+    </tab>
+    <tab heading="Statistiques en temps réel">Statistiques en temps réel</tab>
+    <tab heading="Interactions">Interactions</tab>
+    <tab heading="Autres">Autres</tab>
+
+</tabset>
+
+</div>
+
+
+
+<!--Specs-->
+
+
+
+<!-- Form -->
+

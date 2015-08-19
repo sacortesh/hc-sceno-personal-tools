@@ -1,172 +1,32 @@
 <html>
 <head>
 	<title>
-		Objects management
+		AirSpace CMS: Objects Management
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<link href="/stylesheets/style.css" rel="stylesheet">
 	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 	<script type="text/javascript" src="/javascripts/angularApp.js"></script>
+	<script type="text/javascript" src="/javascripts/ui-bootstrap-tpls-0.13.3.js"></script>
+
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
 </head>
 <body ng-app="weekendAttack">
-	<div class="container">
 
-		<div class="row">
-			<div class="container">
+	<div class="row">
+		<div class="container">
 
-					<ui-view></ui-view>
-
-			</div>
+			<ui-view></ui-view>
 
 		</div>
-	</div>
-
-
-
-	<!--Inline Templates -->
-	<!--Chaange when deploying to webserver -->
-	<script type="text/ng-template" id="/home.html">
-
-	<div class="page-header">
-	<center><h1>Objects management</h1><center>
-	</div>
-	<div class="container panel panel-default">
-	<ul class="list-group">
-
-	<li class="list-group-item" ng-repeat="obj in objects | orderBy: 'name'">
-	<span ng-click="incrementPriority(obj)">UP</span>
-	<span ng-click="decreasePriority(obj)">DOWN</span>
-	{{obj.priority}} -
-	<span style="font-size:20px; margin-left:10px;">
-	<a href="localhost:1992/objects/{{obj.name | lowercase}}">{{obj.name | lowercase}}</a>
-	</span>
-	<a href="#/objects/{{obj._id}}">Information</a>
-	<div class="group pull-right" ng-hide="locked">
-	<button class="btn btn-primary">Edit</button>
-	<button class="btn btn-primary">Delete</button>
-	</div>
-	<blockquote ng-show="obj.description">
-	<p>{{obj.description}}</p>
-	</blockquote>
-
-	</li>
-
-	</ul>
-
-	</div>
-	<br></br>
-
-	<div class="container">
-	<button ng-click="lockInterface()" class="btn btn-primary">Lock/Unlock</button>
-	</div>
-
-	<br></br>
-
-
-	<div class="container jumbotron" ng-hide="locked">
-
-	<form ng-submit="addObject()">
-	<h3>Create an object</h3>
-	<div class="form-group">
-	<input type="text" class="form-control" placeholder='Object name' ng-model="name"></input>
-	</div>
-	<div class="form-group">
-	<textarea type="text" class="form-control" placeholder='Description' ng-model="description" rows="3"></textarea>
-	</div>
-	<div class="form-group">
-	<p class="lead">Generated url access: localhost:1992/objects/{{name | lowercase}} </p>
-	</div>
-	<div class="form-group">
-	<button type="submit" class="btn btn-primary">Create/Edit</button>
-	<button type="reset" class="btn btn-primary">Reset</button>
-	</div>
-
-	</form>
-	</div>
 
 	</div>
 
-	</script>
-
-	<script type="text/ng-template" id="/objects.html">
-	<div class="page-header">
-	<center><h1>{{obj.name}}</h1><center>
-	</div>
-	<div class="container">
-	<div class="container panel panel-default">
-
-	<table class="table table-hover">
-	<colgroup>
-		<col class="col-md-2"></col>
-		<col class="col-md-8"></col>
-		<col class="col-md-2"></col>
-	</colgroup>
-
-
-	<thead>
-	<tr>
-	<th>Name</th>
-	<th>Value</th>
-	<th>Actions</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr ng-repeat="spec in obj.specs | orderBy: 'name'">
-	<td>{{spec.name}}</td>
-	<td>
-	<img ng-src="{{spec.value}}" ng-show="{{spec.isImg}}"  alt="{{spec.name}}" height="100" width="100">
-	<span ng-hide="{{spec.isImg}}">{{spec.value}}</span>
-	</td>
-	<td>
-	<button class="btn btn-primary">Edit</button>
-	<button class="btn btn-primary">Delete</button>
-	</td>
-	</tr>
-	<tr ng-hide="((!name || name=='') && (!value || value==''))" class="info">
-	<td>{{name}}</td>
-	<td>
-	<img ng-show="isImg" ng-src="{{value}}" alt="{{name}}" height="100" width="100">
-	<span ng-hide="isImg">{{value}}</span>
-	</td>
-	<td>
-	</td>
-	</tr>
-	</tbody>
-	</table>
-
-
-	</div>
-	</div>
-
-	<!-- Form -->
-
-	<div class="container jumbotron">
-
-	<form ng-submit="addSpec()">
-	<h3>Add new specification</h3>
-	<div class="form-group">
-	<input type="text" class="form-control" placeholder='Name' ng-model="name"></input>
-	</div>
-	<div class="form-group">
-	<input type="text" class="form-control" placeholder='Value (or Url of image)' ng-model="value"></input>
-	</div>
-	<div class="checkbox">
-	<label>
-	<input type="checkbox" ng-model="isImg"> Is it an Img? </input>
-	</label>
-	</div>
-	<div class="form-group">
-	<button type="submit" class="btn btn-primary">Create/Edit</button>
-	<button type="reset" class="btn btn-primary">Reset</button>
-	</div>
-
-	</form>
-	</div>
-
-
-	</script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 
 </body>

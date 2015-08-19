@@ -1,0 +1,61 @@
+<div class="page-header">
+    <center><h1>AirSpace CMS: Objects Management</h1><center>
+    </div>
+
+    <div class="btn-group btn-group-justified" role="group">
+        <div class="btn-group" role="group">
+            <button ng-click="lockInterface()" class="btn btn-primary">Lock/Unlock</button>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="panel panel-default">
+        <ul class="list-group">
+
+            <li class="list-group-item" ng-repeat="obj in objects | orderBy: 'name'">
+                <span ng-click="incrementPriority(obj)">UP</span>
+                <span ng-click="decreasePriority(obj)">DOWN</span>
+                {{obj.priority}} -
+                <span style="font-size:20px; margin-left:10px;">
+                    <a href="localhost:1992/objects/{{obj.name | lowercase}}">{{obj.name | lowercase}}</a>
+                </span>
+                <a href="#/objects/{{obj._id}}">Information</a>
+                <div class="group pull-right" ng-hide="locked">
+                    <button class="btn btn-primary disabled">Edit</button>
+                    <button class="btn btn-primary disabled">Delete</button>
+                </div>
+                <blockquote ng-show="obj.description">
+                    <p>{{obj.description}}</p>
+                </blockquote>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    <br>
+
+    <div class="jumbotron" ng-hide="locked">
+
+        <form ng-submit="addObject()">
+            <h3>Create an object</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder='Object name' ng-model="name"></input>
+            </div>
+            <div class="form-group">
+                <textarea type="text" class="form-control" placeholder='Description' ng-model="description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <p class="lead">Generated url access: localhost:1992/objects/{{name | lowercase}} </p>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create/Edit</button>
+                <button type="reset" class="btn btn-primary disabled">Reset</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>

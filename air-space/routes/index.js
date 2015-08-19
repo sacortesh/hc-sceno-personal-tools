@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var ip = require('./backend-helpers')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -42,6 +43,11 @@ router.post('/api/objects', function(req, res, next){
     });
 
 });
+
+router.get('/api/ip', function(req, res, next){
+    var ipf = ip.getIPLocal();
+    res.json({ip: ipf});
+})
 
 /**
 Parameter APIS

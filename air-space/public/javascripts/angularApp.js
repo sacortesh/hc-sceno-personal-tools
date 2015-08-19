@@ -1,4 +1,4 @@
-var app = angular.module('weekendAttack', ['ui.router']);
+var app = angular.module('weekendAttack', ['ui.router', 'ui.bootstrap']);
 
 app.config([
 	'$stateProvider',
@@ -7,7 +7,7 @@ app.config([
 		$stateProvider
 		.state('home',{
 			url: '/home',
-			templateUrl: '/home.html',
+			templateUrl: 'partials/home.html',
 			controller: 'MainCtrl',
 			resolve: {
 				objectPromise: ['objects', function(objects){
@@ -18,15 +18,19 @@ app.config([
 
 		$stateProvider.state('objects', {
 			url: '/objects/{id}',
-			templateUrl: '/objects.html',
+			templateUrl: 'partials/objects.html',
 			controller: 'ObjectsCtrl',
 			resolve: {
 				object: ['$stateParams', 'objects', function($stateParams, objects){
 					return objects.get($stateParams.id);
-				}]
+				},
+				],
+				ip: ['tools', function(tools){
+					return tools.getIPLocal();
+				},
+				]
 			}
 		});
-
 		$urlRouterProvider.otherwise('home');
 	}]);
 
@@ -69,8 +73,10 @@ app.controller('ObjectsCtrl',[
 	'$scope',
 	'objects',
 	'object',
-	function($scope, objects, object){
+	'ip',
+	function($scope, objects, object, ip){
 		$scope.obj = object;
+		$scope.ip = ip;
 
 		$scope.addSpec = function (){
 			//Verify non-value specs
@@ -122,4 +128,17 @@ app.factory('objects', ['$http', function($http){
 	};
 
 	return o;
+}]);
+
+app.factory('tools', ['$http', function($http){
+	var t = {
+	};
+
+	t.getIPLocal = function(){
+		return $http.get('/api/ip').then(function(res){
+			return res.data.ip;
+		});
+	};
+
+	return t;
 }]);
