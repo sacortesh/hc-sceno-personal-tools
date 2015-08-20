@@ -1,0 +1,222 @@
+<div class="page-header">
+    <center><h1>{{obj.name}}</h1></center>
+</div>
+
+
+<accordion>
+
+    <!--Start-->
+    <accordion-group is-open="false">
+    <accordion-heading>
+    <center>Information générales</center>
+</accordion-heading>
+
+<br>
+
+<div class="panel panel-default">
+    <br>
+    <p class="lead"><strong>Description</strong></p>
+    <p>{{obj.description}}</p>
+
+</div>
+
+
+</accordion-group>
+
+<!--Start-->
+
+
+<accordion-group is-open="false">
+<accordion-heading>
+<center>Specifications</center>
+</accordion-heading>
+
+<br>
+
+<div class="panel panel-default">
+
+    <table class="table table-hover">
+        <colgroup>
+        <col class="col-md-2"></col>
+        <col class="col-md-8"></col>
+        <col class="col-md-2"></col>
+    </colgroup>
+
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="spec in obj.specs | orderBy: 'name'">
+            <td>{{spec.name}}</td>
+            <td>
+                <img ng-src="{{spec.value}}" ng-show="{{spec.isImg}}"  alt="{{spec.name}}" height="100" width="100">
+                <span ng-hide="{{spec.isImg}}">{{spec.value}}</span>
+            </td>
+            <td>
+                <button class="btn btn-primary disabled">Edit</button>
+                <button class="btn btn-primary disabled">Delete</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+</div>
+
+</accordion-group>
+
+
+<accordion-group is-open="false">
+<accordion-heading>
+<center>Statistiques en temps réel</center>
+</accordion-heading>
+
+<br>
+
+<div class="panel panel-default">
+    <br>
+
+    <table class="table table-hover">
+        <colgroup>
+        <col class="col-md-2"></col>
+        <col class="col-md-2"></col>
+        <col class="col-md-4"></col>
+        <col class="col-md-1"></col>
+        <col class="col-md-1"></col>
+        <col class="col-md-2"></col>
+
+    </colgroup>
+
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Range</th>
+            <th>API Url</th>
+            <th>Field Returned</th>
+            <th>Unit</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="stat in obj.stats | orderBy: 'name'">
+            <td>{{stat.name}}</td>
+            <td>
+                {{stat.val_min}} - {{stat.val_max}}
+            </td>
+            <td>
+                {{stat.url_interaction}}
+            </td>
+            <td>
+                {{stat.field}}
+            </td>
+            <td>
+                {{stat.unit}}
+            </td>
+            <td>
+                <button class="btn btn-primary disabled">Edit</button>
+                <button class="btn btn-primary disabled">Delete</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+</div>
+
+
+</accordion-group>
+
+<accordion-group is-open="false">
+<accordion-heading>
+<center>Interactions</center>
+</accordion-heading>
+
+<br>
+
+<div class="panel panel-default">
+    <br>
+
+    <div class="panel panel-default">
+
+        <table class="table table-hover">
+            <colgroup>
+            <col class="col-md-2"></col>
+            <col class="col-md-1"></col>
+            <col class="col-md-1"></col>
+            <col class="col-md-4"></col>
+            <col class="col-md-1"></col>
+            <col class="col-md-1"></col>
+            <col class="col-md-2"></col>
+
+        </colgroup>
+
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Range</th>
+                <th>Step</th>
+                <th>API Url</th>
+                <th>Field to attack</th>
+                <th>Unit</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="action in obj.actions | orderBy: 'name'">
+                <td>{{action.name}}</td>
+                <td>
+                    {{action.val_min}} - {{action.val_max}}
+                </td>
+                <td>{{action.step}}</td>
+                <td>
+                    {{action.url_interaction}}
+                </td>
+                <td>
+                    {{action.field}}
+                </td>
+                <td>
+                    {{action.unit}}
+                </td>
+                <td>
+                    <button class="btn btn-primary disabled">Edit</button>
+                    <button class="btn btn-primary disabled">Delete</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
+</div>
+
+
+</accordion-group>
+
+<accordion-group is-open="false">
+    <accordion-heading>
+    <center>D'Autres</center>
+</accordion-heading>
+
+<br>
+
+<div class="panel panel-default">
+     <p ng-hide="((!obj.miscs.url || obj.miscs.url=='')">{{obj.miscs.url}}</p>
+
+
+</div>
+
+
+</accordion-group>
+
+</accordion>
+
+

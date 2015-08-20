@@ -31,6 +31,23 @@ app.config([
 				]
 			}
 		});
+
+		$stateProvider.state('rendered', {
+			url: '/rendered/{id}',
+			templateUrl: 'partials/rendered.html',
+			controller: 'ObjectsCtrl',
+			resolve: {
+				object: ['$stateParams', 'objects', function($stateParams, objects){
+					return objects.get($stateParams.id);
+				},
+				],
+				ip: ['tools', function(tools){
+					return tools.getIPLocal();
+				},
+				]
+			}
+		});
+
 		$urlRouterProvider.otherwise('home');
 	}]);
 
@@ -77,56 +94,102 @@ app.controller('ObjectsCtrl',[
 	function($scope, objects, object, ip){
 		$scope.obj = object;
 		$scope.ip = ip;
+		$scope.data = {};
 
 		$scope.addSpec = function (){
 			//Verify non-value specs
-			if($scope.value === ''){return;}
+			if($scope.data.value === ''){return;}
 
 			objects.addSpec(object._id,{
-				name: $scope.name,
-				value: $scope.value,
-				isImg: $scope.isImg
+				name: $scope.data.name,
+				value: $scope.data.value,
+				isImg: $scope.data.isImg
 			}).success(function(spec){
 				$scope.obj.specs.push(spec);
 			});
 
 			//Reset
-			$scope.name = '';
-			$scope.value = '';
-			$scope.isImg = false;
+			$scope.data.name = '';
+			$scope.data.value = '';
+			$scope.data.isImg = false;
 
 		};
 
 		$scope.addStat = function (){
 			//Verify non-value specs
-			if($scope.value === '' || $scope.name === '' ||
-				$scope.val_min === '' || $scope.val_max === '' ||
-				$scope.url_interaction || $scope.field){
+			if($scope.data.name === '' ||
+				$scope.data.val_min === '' || $scope.data.val_max === '' ||
+				$scope.data.url_interaction === ''|| $scope.data.field === ''){
 				console.log("Imprime esto");
 
-				return;}
+			return;}
 
-			console.log("Imprime esto:" + $scope.name);
+			console.log("Imprime esto:" + $scope.data.name);
 
 			objects.addStat(object._id, {
-				name: $scope.name,
-				val_min: $scope.val_min,
-				val_max: $scope.val_max,
-				url_interaction: $scope.url_interaction,
-				field: $scope.field,
-				unit: $scope.unit
+				name: $scope.data.name,
+				val_min: $scope.data.val_min,
+				val_max: $scope.data.val_max,
+				url_interaction: $scope.data.url_interaction,
+				field: $scope.data.field,
+				unit: $scope.data.unit
 			}).success(function(stat){
 				$scope.obj.stats.push(stat);
 			});
 
 			//Reset
-			$scope.name = '';
-			$scope.val_min = '';
-			$scope.val_max = '';
-			$scope.url_interaction= '';
-			$scope.field = '';
-			$scope.unit = '';
+			$scope.data.name = '';
+			$scope.data.val_min = '';
+			$scope.data.val_max = '';
+			$scope.data.url_interaction= '';
+			$scope.data.field = '';
+			$scope.data.unit = '';
 
+		};
+
+		$scope.addAction = function (){
+			//Verify non-value specs
+			if($scope.data.name === '' ||
+				$scope.data.val_min === '' || $scope.data.val_max === '' ||
+				$scope.data.url_interaction === ''|| $scope.data.field === ''){
+				console.log("FE: addAction() Verification error");
+			return;}
+
+			objects.addAction(object._id,{
+				name: $scope.data.name,
+				val_min: $scope.data.val_min,
+				val_max: $scope.data.val_max,
+				step: $scope.data.step,
+				url_interaction: $scope.data.url_interaction,
+				field: $scope.data.field,
+				unit: $scope.data.unit
+			}).success(function(spec){
+				$scope.obj.actions.push(spec);
+			});
+
+			//Reset
+			$scope.data.name = '';
+			$scope.data.val_min = '';
+			$scope.data.val_max = '';
+			$scope.data.step = '';
+			$scope.data.url_interaction= '';
+			$scope.data.field = '';
+			$scope.data.unit = '';
+
+		};
+
+		$scope.setMisc = function (){
+			//Verify non-value specs
+			if($scope.data.url === ''){return;}
+
+			objects.setMisc(object._id,{
+				url: $scope.data.url,
+			}).success(function(spec){
+				$scope.obj.miscs = spec;
+			});
+
+			//Reset
+			$scope.data.url = '';
 		};
 
 
@@ -161,6 +224,14 @@ app.factory('objects', ['$http', function($http){
 
 	o.addStat = function(id, stat){
 		return $http.post('/api/objects/' +id + '/stats', stat);
+	};
+
+	o.addAction = function(id, stat){
+		return $http.post('/api/objects/' +id + '/actions', stat);
+	};
+
+	o.setMisc = function(id, stat){
+		return $http.post('/api/objects/' +id + '/misc', stat);
 	};
 
 	return o;

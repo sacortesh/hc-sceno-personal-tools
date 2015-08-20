@@ -145,7 +145,7 @@ router.post('/api/objects/:object/specs', function(req,res, next){
         req.object.save(function(err,object){
             if (err) {return next(err)};
 
-            res.json(spec);
+            res.json(object);
         });
     });
 });
@@ -163,7 +163,7 @@ router.post('/api/objects/:object/stats', function(req, res, next){
         req.object.save(function(err,object){
             if (err) {return next(err)};
 
-            res.json(stat);
+            res.json(object);
         });
     });
 });
@@ -180,7 +180,7 @@ router.post('/api/objects/:object/actions', function(req, res, next){
         req.object.save(function(err,object){
             if (err) {return next(err)};
 
-            res.json(action);
+            res.json(object);
         });
     });
 });
@@ -190,14 +190,24 @@ router.post('/api/objects/:object/misc', function(req, res, next){
 
     misc.object = req.object;
 
-    misc.save(function(err, misc){
-        if(err){return next(err);}
+    console.log(misc.url);
 
-        req.object.miscs.push(misc);
+    misc.save(function(err, misc){
+        if(err){
+            console.log("El error esta aqui");
+            return next(err);
+        }
+
+        req.object.miscs = misc;
+
+        console.log(req.object);
+
         req.object.save(function(err,object){
             if (err) {return next(err)};
 
-            res.json(misc);
+            console.log(object);
+
+            res.json(object);
         });
     });
 });
