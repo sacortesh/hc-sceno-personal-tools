@@ -1,4 +1,4 @@
-var app = angular.module('weekendAttack', ['ui.router', 'ui.bootstrap', 'ui.bootstrap-slider']);
+var app = angular.module('weekendAttack', ['ui.router', 'ui.bootstrap']);
 
 app.config([
 	'$stateProvider',
@@ -95,6 +95,18 @@ app.controller('ObjectsCtrl',[
 		$scope.obj = object;
 		$scope.ip = ip;
 		$scope.data = {};
+
+		$scope.obj.actions.forEach(function(action){
+			console.log(action.name +"is being processed");
+
+			var slider = new Slider("#"+ action.name, {
+				formatter: function(value) {
+					return 'Current value: ' + value;
+				}
+			});
+
+		});
+
 
 		$scope.addSpec = function (){
 			//Verify non-value specs
@@ -203,16 +215,12 @@ app.controller('ObjectsCtrl',[
 
 		$scope.actionManager = function(action){
 
-			$(function(){
-				$("#"+ action.name).slider();
-
-				$("#"+ action.name).on("slideStop", function(slideEvt){
+			$( document ).ready(function () {
+				console.log(action);
+				$("#"+ action.name)
+				.on("slideStop", function(slideEvt){
 					onSlide(action.url_interaction, slideEvt.value);
 				});
-			});
-
-
-			$( document ).ready(function () {
 
 
 				RTSlider(action.url_interaction, action.field, action.name, 2000);

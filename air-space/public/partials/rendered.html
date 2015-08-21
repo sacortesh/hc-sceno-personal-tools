@@ -143,17 +143,38 @@
             <tr ng-repeat="action in obj.actions | orderBy: 'name'">
                 <td>{{action.name}}</td>
                 <td>
-                    <!--
-                    <slider ng-init="actionManager(action)" id="{{action.name}}" min="{{action.val_min}}" step="{{action.step}}" max="{{action.val_max}}" value="2" style="width: 100%;"></slider>
-                    -->
+                    <input ng-init="actionManager(action)" id="{{action.name}}"  type="text" data-slider-handle="custom" data-slider-min="{{action.val_min}}" data-slider-step="{{action.step}}" data-slider-max="{{action.val_max}}" style="width: 100%;"/>
 
-                    <input ng-init="actionManager(action)" id="{{action.name}}"  type="text" data-slider-handle="custom" style="width: 100%;"/>
-                </td>
 
-            </tr>
+            </td>
 
-        </tbody>
-    </table>
+        </tr>
+        <tr>
+            <td>Random</td>
+            <td>
+
+                <script>
+
+                $("#awesome").slider({
+                    formatter: function(value) {
+                        return value;
+                    }
+                });
+
+                </script>
+
+                <input id="awesome" type="text" data-slider-handle="custom" data-slider-min="0" data-slider-step="1" data-slider-max="100" style="width: 100%;"/>
+
+
+
+
+
+            </td>
+
+        </tr>
+
+    </tbody>
+</table>
 
 
 </div>
@@ -170,7 +191,7 @@
 <br>
 
 <div class="panel panel-default">
-   <p ng-hide="((!obj.miscs.url || obj.miscs.url=='')">{{obj.miscs.url}}</p>
+ <p ng-hide="((!obj.miscs.url || obj.miscs.url=='')">{{obj.miscs.url}}</p>
 
 
 </div>
