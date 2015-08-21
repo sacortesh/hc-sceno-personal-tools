@@ -1,4 +1,4 @@
-var app = angular.module('weekendAttack', ['ui.router', 'ui.bootstrap']);
+var app = angular.module('weekendAttack', ['ui.router', 'ui.bootstrap', 'ui.bootstrap-slider']);
 
 app.config([
 	'$stateProvider',
@@ -192,8 +192,35 @@ app.controller('ObjectsCtrl',[
 			$scope.data.url = '';
 		};
 
+		$scope.statusManager = function(status){
+			$( document ).ready(function () {
+				RTProgress(status.url_interaction, status.name+"Bar", status.field, status.unit, status.val_max - status.val_min, 2000);
+			})
 
-	}]);
+		};
+
+
+
+		$scope.actionManager = function(action){
+
+			$(function(){
+				$("#"+ action.name).slider();
+
+				$("#"+ action.name).on("slideStop", function(slideEvt){
+					onSlide(action.url_interaction, slideEvt.value);
+				});
+			});
+
+
+			$( document ).ready(function () {
+
+
+				RTSlider(action.url_interaction, action.field, action.name, 2000);
+			}
+
+			)};
+
+		}]);
 
 app.factory('objects', ['$http', function($http){
 	var o = {

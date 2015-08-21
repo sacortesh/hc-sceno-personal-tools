@@ -3,8 +3,55 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+      background-color: transparent;
 }
 
 a {
   color: #00B7FF;
+}
+
+.slider-handle.custom {
+background: transparent none;
+/* You can customize the handle and set a background image */
+}
+
+/* Or display content like unicode characters or fontawesome icons */
+.slider-handle.custom::before {
+line-height: 20px;
+font-size: 20px;
+content: '\2B22'; /*unicode star character*/
+color: #0A5CB2;
+}
+
+.slider-selection {
+	background: #438FDD;
+}
+
+footer{
+    height: 100px;
+    background: #438FDD;
+    color: #FFFFFF;
+    opacity: 0;
+
+}
+
+h1{
+    font-weight: bold;
+    color: #0A5CB2
+
+}
+
+.page-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.progress-bar-royal{
+    background-image:-webkit-linear-gradient(top,rgb(168, 78, 240) 0,rgb(110, 31, 224) 100%);
+    background-image:-o-linear-gradient(top,rgb(168, 78, 240) 0,rgb(110, 31, 224) 100%);
+    background-image:-webkit-gradient(linear,left top,left bottom,from(rgb(168, 78, 240)),to(#rgb(110, 31, 224)));
+    background-image:linear-gradient(to bottom, rgb(168, 78, 240) 0px, rgb(110, 31, 224) 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9534f', endColorstr='#ffc9302c', GradientType=0);
+    background-repeat:repeat-x
 }
