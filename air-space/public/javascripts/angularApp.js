@@ -1,4 +1,4 @@
-var app = angular.module('weekendAttack', ['ui.router', 'ui.bootstrap']);
+var app = angular.module('weekendAttack', ['ui.router', 'ui.bootstrap', 'rzModule']);
 
 app.config([
 	'$stateProvider',
@@ -96,16 +96,7 @@ app.controller('ObjectsCtrl',[
 		$scope.ip = ip;
 		$scope.data = {};
 
-		$scope.obj.actions.forEach(function(action){
-			console.log(action.name +"is being processed");
-
-			var slider = new Slider("#"+ action.name, {
-				formatter: function(value) {
-					return 'Current value: ' + value;
-				}
-			});
-
-		});
+	
 
 
 		$scope.addSpec = function (){

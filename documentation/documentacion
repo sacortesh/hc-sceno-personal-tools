@@ -1,0 +1,3 @@
+GET http://lamps-bubblespace.rhcloud.com/api/lamps
+POST http://lamps-bubblespace.rhcloud.com/api/lamps name status
+http://lamps-bubblespace.rhcloud.com/api/lamps/:id

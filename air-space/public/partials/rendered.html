@@ -143,35 +143,17 @@
             <tr ng-repeat="action in obj.actions | orderBy: 'name'">
                 <td>{{action.name}}</td>
                 <td>
-                    <input ng-init="actionManager(action)" id="{{action.name}}"  type="text" data-slider-handle="custom" data-slider-min="{{action.val_min}}" data-slider-step="{{action.step}}" data-slider-max="{{action.val_max}}" style="width: 100%;"/>
+                        <rzslider ng-init="actionManager(action)"
+                        rz-slider-floor="action.val_min"
+                        rz-slider-ceil="action.val_max" 
+                        rz-slider-model="action.value"></rzslider>
+                        {{action.value}}
 
 
             </td>
 
         </tr>
-        <tr>
-            <td>Random</td>
-            <td>
-
-                <script>
-
-                $("#awesome").slider({
-                    formatter: function(value) {
-                        return value;
-                    }
-                });
-
-                </script>
-
-                <input id="awesome" type="text" data-slider-handle="custom" data-slider-min="0" data-slider-step="1" data-slider-max="100" style="width: 100%;"/>
-
-
-
-
-
-            </td>
-
-        </tr>
+        
 
     </tbody>
 </table>
