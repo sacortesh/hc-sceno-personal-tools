@@ -1,5 +1,5 @@
 <div class="page-header">
-    <center><h1>test {{obj.name}}</h1></center>
+    <center><h1>Dev Page: {{obj.name}}</h1></center>
 </div>
 
 
@@ -181,7 +181,7 @@
 
 
         <form ng-submit="addStat()">
-            <h3>Add new specification</h3>
+            <h3>Add new real time statistic</h3>
             <p>This will be rendered as a status bar</p>
 
             <div class="form-group">
@@ -328,9 +328,9 @@
 
     <div class="panel panel-default">
 
-        <p ng-hide="((!obj.miscs.url || obj.miscs.url=='')">{{obj.miscs.url}}</p>
+        <p ng-hide="(!obj.miscs.url || obj.miscs.url=='')">{{obj.miscs.url}}</p>
 
-        <p ng-hide="((!data.url || data.url==''))">{{data.url}}</p>
+        <p ng-hide="(!data.url || data.url=='')">{{data.url}}</p>
 
     </div>
 

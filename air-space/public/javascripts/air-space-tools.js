@@ -1,4 +1,30 @@
 //Logique generale
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+
+  } else if (typeof XDomainRequest != "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+}
+
+
+
 
 function RTProgress(url, element, field, symbol, max, nextStep){
 
@@ -27,7 +53,7 @@ function RTProgress(url, element, field, symbol, max, nextStep){
     }, nextStep);
 }
 
-function RTSlider(url, field, element, nextStep){
+function RTSlider(url, field, element){
 
     //var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
@@ -39,15 +65,16 @@ function RTSlider(url, field, element, nextStep){
     xmlHttp.setRequestHeader("Accept","application/json");
     xmlHttp.send( null );
     var xmlObtained = xmlHttp.responseText;
+    console.log(url);
+
+    console.log(xmlObtained);
+
 
     var JSONData = JSON.parse(xmlObtained);
     var current = JSONData[field];
     current = parseInt(current);
 
-    $("#" + element).slider('setValue', current);
-    var t=setTimeout(function(){
-        RTSlider(url, field, element, nextStep)
-    }, nextStep);
+    return current;
 }
 
 function RTGraphic(url, element, nextStep){
@@ -67,8 +94,7 @@ function onSlide(url, value){
 
     xmlHttp = new XMLHttpRequest();
     xmlHttp.open( "POST", url, true );
-    xmlHttp.setRequestHeader("Content-type","text/plain");
+    xmlHttp.setRequestHeader("Content-type","application/json");
     xmlHttp.send(value);
-    //var xmlObtained = xmlHttp.responseText;
 }
 

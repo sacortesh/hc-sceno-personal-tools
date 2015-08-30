@@ -208,16 +208,30 @@ app.controller('ObjectsCtrl',[
 
 			$( document ).ready(function () {
 				console.log(action);
-				$("#"+ action.name)
-				.on("slideStop", function(slideEvt){
-					onSlide(action.url_interaction, slideEvt.value);
-				});
+				
+				//Inicializar funcion en bucle
+
+				setInterval(function () {
+					action.value = RTSlider(action.url_interaction, action.field, action.name);
+				}, 2000);
 
 
-				RTSlider(action.url_interaction, action.field, action.name, 2000);
 			}
 
 			)};
+
+		$scope.actionOnSlide = function(action){
+			console.log("Aqui llamamos a la funcion que hace cambion en el API");
+			console.log(action.url_interaction);
+			console.log(action.value);
+
+			var temp = {};
+			temp[action.field] = action.value;
+			var returnValue = JSON.stringify(temp);
+			console.log(returnValue);
+
+			onSlide(action.url_interaction, action.value);
+			};
 
 		}]);
 
