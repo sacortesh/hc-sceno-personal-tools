@@ -89,12 +89,20 @@ function RTGraphic(url, element, nextStep){
     }, nextStep);
 }
 
-function onSlide(url, value){
+function onSlide(url, value, field){
     var xmlHttp = null;
 
-    xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "POST", url, true );
-    xmlHttp.setRequestHeader("Content-type","application/json");
-    xmlHttp.send(value);
+    if (field){
+
+        xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "POST", url, true );
+        xmlHttp.setRequestHeader("Content-type","application/json");
+        xmlHttp.send(value);
+    }else{
+        xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "POST", url, true );
+        xmlHttp.setRequestHeader("Content-type","text/plain");
+        xmlHttp.send(value);
+    }
 }
 

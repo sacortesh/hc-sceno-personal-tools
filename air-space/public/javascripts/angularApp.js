@@ -96,7 +96,7 @@ app.controller('ObjectsCtrl',[
 		$scope.ip = ip;
 		$scope.data = {};
 
-	
+
 
 
 		$scope.addSpec = function (){
@@ -208,7 +208,7 @@ app.controller('ObjectsCtrl',[
 
 			$( document ).ready(function () {
 				console.log(action);
-				
+
 				//Inicializar funcion en bucle
 
 				setInterval(function () {
@@ -225,12 +225,17 @@ app.controller('ObjectsCtrl',[
 			console.log(action.url_interaction);
 			console.log(action.value);
 
-			var temp = {};
-			temp[action.field] = action.value;
-			var returnValue = JSON.stringify(temp);
-			console.log(returnValue);
+			var returnValue = null;
+			if (action.field){
+				var temp = {};
+				temp[action.field] = action.value;
+				returnValue = JSON.stringify(temp);
+				console.log(returnValue);
+			}else{
+				returnValue = action.value;
+			}
 
-			onSlide(action.url_interaction, action.value);
+			onSlide(action.url_interaction, returnValue, action.field);
 			};
 
 		}]);
