@@ -13,6 +13,8 @@ require('./models/Misc');
 require('./models/Spec');
 require('./models/Stat');
 
+
+//Connecxion
 mongoose.connect('mongodb://user:gogoptl@ds055832.mongolab.com:55832/air-space-data');
 
 
